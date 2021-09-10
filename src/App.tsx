@@ -1,14 +1,7 @@
-import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
-
-  const [count, setCount] = React.useState(0);
-
-  const increaseCount = () => setCount(count => count + 1);
-
-  const decreaseCount = () => setCount(count => count - 1);
 
   return (
     <div className="App">
@@ -25,11 +18,6 @@ function App() {
         >
           Learn React
         </a>
-
-        <button onClick={increaseCount}>+</button>
-        <span>{count}</span>
-        <button onClick={decreaseCount}>-</button>
-
       </header>
     </div>
   );
