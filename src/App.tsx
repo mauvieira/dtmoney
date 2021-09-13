@@ -1,3 +1,10 @@
+import { GlobalStyle } from './styles/global';
+
 export const App = () => {
-  return <h1>dtmoney</h1>;
+  return (
+    <>
+      <GlobalStyle />
+      <h1>dtmoney</h1>
+    </>
+  );
 };
