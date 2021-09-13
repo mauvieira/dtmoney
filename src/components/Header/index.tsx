@@ -1,7 +1,18 @@
-import React from 'react';
+import Logo from '../../assets/logo.svg';
+import { Container, Content } from './styles';
 
-// import { Container } from './styles';
+import { Wrapper } from '../Wrapper';
+import { Button } from '../Button';
 
 export const Header = () => {
-  return <div />;
+  return (
+    <Container>
+      <Wrapper>
+        <Content>
+          <img src={Logo} alt="Logo dtmoney" />
+          <Button>new transaction</Button>
+        </Content>
+      </Wrapper>
+    </Container>
+  );
 };
