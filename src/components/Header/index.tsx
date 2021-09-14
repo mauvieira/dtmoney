@@ -10,7 +10,7 @@ export const Header = () => {
       <Wrapper>
         <Content>
           <img src={Logo} alt="Logo dtmoney" />
-          <Button>new transaction</Button>
+          <Button onClick={() => console.log('click')}>new transaction</Button>
         </Content>
       </Wrapper>
     </Container>

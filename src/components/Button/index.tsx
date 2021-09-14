@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { Container } from './styles';
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
 }
 
-export const Button = ({ children }: ButtonProps) => (
-  <Container>{children}</Container>
+export const Button = ({ children, ...props }: ButtonProps) => (
+  <Container {...props}>{children}</Container>
 );
