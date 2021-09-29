@@ -58,6 +58,9 @@ export const NewTransactionModal = ({
     });
 
     handleCloseModal();
+    setTitle('');
+    setAmount(0);
+    setCategory('');
   };
 
   return (
