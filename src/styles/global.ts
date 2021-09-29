@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     border: 0;
     list-style: none;
+    outline: none;
   }
 
   html {
@@ -50,6 +51,10 @@ const GlobalStyle = createGlobalStyle`
   [disabled] {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+
+  .ReactModal__Overlay {
+    background-color: rgba(0, 0, 0, 0.5) !important;
   }
 `;
 

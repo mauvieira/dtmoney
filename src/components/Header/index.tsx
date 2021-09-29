@@ -4,13 +4,17 @@ import { Container, Content } from './styles';
 import { Wrapper } from '../Wrapper';
 import { Button } from '../Button';
 
-export const Header = () => {
+interface HeaderProps {
+  handleOpenModal: () => void;
+}
+
+export const Header = ({ handleOpenModal }: HeaderProps) => {
   return (
     <Container>
       <Wrapper>
         <Content>
           <img src={Logo} alt="Logo dtmoney" />
-          <Button onClick={() => console.log('click')}>new transaction</Button>
+          <Button onClick={handleOpenModal}>new transaction</Button>
         </Content>
       </Wrapper>
     </Container>
