@@ -1,4 +1,7 @@
 import { useTransactions } from '../../hooks/useTransactions';
+import { formatDate } from '../../util/formatDate';
+import { formatPriceValue } from '../../util/formatPriceValue';
+
 import { Container } from './styles';
 
 export const TransactionsTable = () => {
@@ -20,16 +23,9 @@ export const TransactionsTable = () => {
             ({ id, title, type, amount, category, createdAt }) => (
               <tr key={id}>
                 <td>{title}</td>
-                <td className={type}>
-                  {new Intl.NumberFormat('en-US', {
-                    style: 'currency',
-                    currency: 'USD'
-                  }).format(amount)}
-                </td>
+                <td className={type}>{formatPriceValue(amount)}</td>
                 <td>{category}</td>
-                <td>
-                  {new Intl.DateTimeFormat('en-US').format(new Date(createdAt))}
-                </td>
+                <td>{formatDate(createdAt)}</td>
               </tr>
             )
           )}
