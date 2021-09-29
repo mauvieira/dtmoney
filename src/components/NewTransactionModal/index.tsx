@@ -48,13 +48,16 @@ export const NewTransactionModal = ({
 
   const handleCreateNewTransaction = async (event: FormEvent) => {
     event.preventDefault();
-    addTransaction({
+
+    await addTransaction({
       title,
       type,
       category,
       amount,
       createdAt: new Date()
     });
+
+    handleCloseModal();
   };
 
   return (
