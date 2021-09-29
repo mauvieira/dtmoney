@@ -5,11 +5,13 @@ import { Wrapper } from '../../components/Wrapper';
 import { TransactionsTable } from '../../components/TransactionsTable';
 
 export const Dashboard = () => {
-  const [_, setTransactions] = useState([]);
+  const [transactions, setTransactions] = useState([]);
 
   const getData = useCallback(async () => {
-    const { data } = await api.get('/transactions');
-    setTransactions(() => data);
+    const {
+      data: { transactions }
+    } = await api.get('/transactions');
+    setTransactions(() => transactions);
   }, []);
 
   useEffect(() => {
@@ -19,7 +21,7 @@ export const Dashboard = () => {
   return (
     <Wrapper>
       <Summary />
-      <TransactionsTable />
+      <TransactionsTable transactions={transactions} />
     </Wrapper>
   );
 };

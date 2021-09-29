@@ -1,5 +1,6 @@
 import { useState, FormEvent } from 'react';
 import Modal from 'react-modal';
+import { api } from '../../services/api';
 import Income from '../../assets/income.svg';
 import Outcome from '../../assets/outcome.svg';
 import Close from '../../assets/close.svg';
@@ -42,12 +43,11 @@ export const NewTransactionModal = ({
   const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState('');
 
-  const handleCreateNewTransaction = (event: FormEvent) => {
+  const handleCreateNewTransaction = async (event: FormEvent) => {
     event.preventDefault();
-    console.log(name);
-    console.log(amount);
-    console.log(category);
-    console.log(transactionType);
+    const data = { name, amount, transactionType, category };
+    const response = await api.post('/transactions', data);
+    console.log(response);
   };
 
   return (

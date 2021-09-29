@@ -1,6 +1,19 @@
 import { Container } from './styles';
 
-export const TransactionsTable = () => {
+interface Transaction {
+  id: number;
+  title: string;
+  type: string;
+  category: string;
+  amount: number;
+  createdAt: Date;
+}
+
+interface TransactionsTableProps {
+  transactions: Transaction[];
+}
+
+export const TransactionsTable = ({ transactions }: TransactionsTableProps) => {
   return (
     <Container>
       <table>
@@ -13,30 +26,14 @@ export const TransactionsTable = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Website development</td>
-            <td className="income">$ 12.000,00</td>
-            <td>Sell</td>
-            <td>13/04/2021</td>
-          </tr>
-          <tr>
-            <td>Hamburger</td>
-            <td className="outcome">- $ 59,00</td>
-            <td>Food</td>
-            <td>13/04/2021</td>
-          </tr>
-          <tr>
-            <td>Rent</td>
-            <td className="outcome">- $ 1.200,00</td>
-            <td>House</td>
-            <td>13/04/2021</td>
-          </tr>
-          <tr>
-            <td>Computer</td>
-            <td className="income">$ 5.400,00</td>
-            <td>Sell</td>
-            <td>13/04/2021</td>
-          </tr>
+          {transactions.map(({ id, title, amount, category, createdAt }) => (
+            <tr key={id}>
+              <td>{title}</td>
+              <td className="income">$ {amount}</td>
+              <td>{category}</td>
+              <td>{createdAt}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </Container>
