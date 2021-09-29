@@ -1,3 +1,5 @@
+import { useEffect, useState, useCallback } from 'react';
+import { api } from '../../services/api';
 import { Container } from './styles';
 
 interface Transaction {
@@ -9,11 +11,20 @@ interface Transaction {
   createdAt: string;
 }
 
-interface TransactionsTableProps {
-  transactions: Transaction[];
-}
+export const TransactionsTable = () => {
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
 
-export const TransactionsTable = ({ transactions }: TransactionsTableProps) => {
+  const getData = useCallback(async () => {
+    const {
+      data: { transactions }
+    } = await api.get('/transactions');
+    setTransactions(() => transactions);
+  }, []);
+
+  useEffect(() => {
+    getData();
+  }, [getData]);
+
   return (
     <Container>
       <table>
