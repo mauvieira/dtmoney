@@ -1,6 +1,6 @@
-import { useTransactions } from '../../hooks/useTransactions';
-import { formatDate } from '../../util/formatDate';
-import { formatPriceValue } from '../../util/formatPriceValue';
+import { useTransactions } from 'hooks/useTransactions';
+import { formatDate } from 'util/formatDate';
+import { formatPriceValue } from 'util/formatPriceValue';
 
 import { Container } from './styles';
 

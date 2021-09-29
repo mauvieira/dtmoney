@@ -1,10 +1,9 @@
 import { useState, FormEvent } from 'react';
-import { useTransactions } from '../../hooks/useTransactions';
+import { useTransactions } from 'hooks/useTransactions';
 import Modal from 'react-modal';
-// import { api } from '../../services/api';
-import Income from '../../assets/income.svg';
-import Outcome from '../../assets/outcome.svg';
-import Close from '../../assets/close.svg';
+import Income from 'assets/income.svg';
+import Outcome from 'assets/outcome.svg';
+import Close from 'assets/close.svg';
 import {
   Container,
   SubmitButton,

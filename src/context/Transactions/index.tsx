@@ -5,7 +5,7 @@ import {
   ReactNode,
   useEffect
 } from 'react';
-import { api } from '../../services/api';
+import { api } from 'services/api';
 
 interface TransactionsStoreProps {
   children: ReactNode;
