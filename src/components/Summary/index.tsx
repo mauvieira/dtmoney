@@ -7,20 +7,25 @@ import { Container, Card } from './styles';
 
 export const Summary = () => {
   const { transactions } = useTransactions();
-  // const cards = [
-  //   {
-  //     title: 'Entradas',
-  //     value: 17400
-  //   },
-  //   {
-  //     title: 'Saídas',
-  //     value: 1259
-  //   },
-  //   {
-  //     title: 'Total',
-  //     value: 16141
-  //   }
-  // ];
+
+  const summary = transactions.reduce(
+    (accumulator, current) => {
+      if (current.type === 'income') {
+        accumulator.deposits += current.amount;
+        accumulator.total += current.amount;
+      } else {
+        accumulator.withdraws += current.amount;
+        accumulator.total -= current.amount;
+      }
+
+      return accumulator;
+    },
+    {
+      deposits: 0,
+      withdraws: 0,
+      total: 0
+    }
+  );
 
   return (
     <Container>
@@ -29,21 +34,21 @@ export const Summary = () => {
           <p>Income</p>
           <img src={Income} alt="Income icon" />
         </header>
-        <h2>R$ 17,400,00</h2>
+        <h2>{summary.deposits}</h2>
       </Card>
       <Card>
         <header>
           <p>Outcome</p>
           <img src={Outcome} alt="Outcome icon" />
         </header>
-        <h2>R$ 1.259,00</h2>
+        <h2>{summary.withdraws}</h2>
       </Card>
       <Card green>
         <header>
           <p>Total</p>
           <img src={Total} alt="Total icon" />
         </header>
-        <h2>R$ 16.141,00</h2>
+        <h2>{summary.total}</h2>
       </Card>
     </Container>
   );
