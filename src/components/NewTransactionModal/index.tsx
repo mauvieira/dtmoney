@@ -1,6 +1,7 @@
 import { useState, FormEvent } from 'react';
+import { useTransactions } from '../../hooks/useTransactions';
 import Modal from 'react-modal';
-import { api } from '../../services/api';
+// import { api } from '../../services/api';
 import Income from '../../assets/income.svg';
 import Outcome from '../../assets/outcome.svg';
 import Close from '../../assets/close.svg';
@@ -38,16 +39,22 @@ export const NewTransactionModal = ({
   isOpen,
   handleCloseModal
 }: ModalProps) => {
-  const [transactionType, setTransactionType] = useState('income');
-  const [name, setName] = useState('');
+  const [type, setType] = useState('income');
+  const [title, setTitle] = useState('');
   const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState('');
 
+  const { addTransaction } = useTransactions();
+
   const handleCreateNewTransaction = async (event: FormEvent) => {
     event.preventDefault();
-    const data = { name, amount, transactionType, category };
-    const response = await api.post('/transactions', data);
-    console.log(response);
+    addTransaction({
+      title,
+      type,
+      category,
+      amount,
+      createdAt: new Date()
+    });
   };
 
   return (
@@ -64,9 +71,9 @@ export const NewTransactionModal = ({
         <h2>Add a new transaction</h2>
         <input
           type="text"
-          placeholder="Name"
-          value={name}
-          onChange={event => setName(event.target.value)}
+          placeholder="Title"
+          value={title}
+          onChange={event => setTitle(event.target.value)}
         />
         <input
           type="number"
@@ -76,17 +83,17 @@ export const NewTransactionModal = ({
         />
         <RadioWrapper>
           <RadioButton
-            isActive={transactionType === 'income'}
+            isActive={type === 'income'}
             activeColor="green"
-            onClick={() => setTransactionType('income')}
+            onClick={() => setType('income')}
           >
             <img src={Income} alt="Income icon" />
             Income
           </RadioButton>
           <RadioButton
-            isActive={transactionType === 'outcome'}
+            isActive={type === 'outcome'}
             activeColor="red"
-            onClick={() => setTransactionType('outcome')}
+            onClick={() => setType('outcome')}
           >
             <img src={Outcome} alt="Outcome icon" />
             Outcome

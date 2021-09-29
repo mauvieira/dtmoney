@@ -1,3 +1,4 @@
+import { useTransactions } from '../../hooks/useTransactions';
 import Income from '../../assets/income.svg';
 import Outcome from '../../assets/outcome.svg';
 import Total from '../../assets/total.svg';
@@ -5,6 +6,7 @@ import Total from '../../assets/total.svg';
 import { Container, Card } from './styles';
 
 export const Summary = () => {
+  const { transactions } = useTransactions();
   // const cards = [
   //   {
   //     title: 'Entradas',

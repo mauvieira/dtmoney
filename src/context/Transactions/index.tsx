@@ -20,9 +20,18 @@ interface Transaction {
   createdAt: string;
 }
 
+interface TransactionHandler {
+  title: string;
+  type: string;
+  category: string;
+  amount: number;
+  createdAt: Date;
+}
+
 interface TransactionsContextProps {
   loading: boolean;
   transactions: Transaction[];
+  addTransaction: (data: TransactionHandler) => Promise<void>;
 }
 
 export const TransactionsContext = createContext<TransactionsContextProps>(
@@ -41,11 +50,18 @@ export const TransactionsStore = ({ children }: TransactionsStoreProps) => {
         data: { transactions }
       } = await api.get('/transactions');
       setTransactions(() => transactions);
-    } catch (error: any) {
-      throw new Error(error);
+    } catch (error) {
+      console.log(error);
     } finally {
       setLoading(false);
     }
+  }, []);
+
+  const addTransaction = useCallback(async (data: TransactionHandler) => {
+    const {
+      data: { transaction }
+    } = await api.post('/transactions', data);
+    setTransactions(transactions => [...transactions, transaction]);
   }, []);
 
   useEffect(() => {
@@ -53,7 +69,9 @@ export const TransactionsStore = ({ children }: TransactionsStoreProps) => {
   }, [getTransactions]);
 
   return (
-    <TransactionsContext.Provider value={{ transactions, loading }}>
+    <TransactionsContext.Provider
+      value={{ transactions, loading, addTransaction }}
+    >
       {children}
     </TransactionsContext.Provider>
   );
