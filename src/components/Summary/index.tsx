@@ -34,21 +34,36 @@ export const Summary = () => {
           <p>Income</p>
           <img src={Income} alt="Income icon" />
         </header>
-        <h2>{summary.deposits}</h2>
+        <h2>
+          {new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD'
+          }).format(summary.deposits)}
+        </h2>
       </Card>
       <Card>
         <header>
           <p>Outcome</p>
           <img src={Outcome} alt="Outcome icon" />
         </header>
-        <h2>{summary.withdraws}</h2>
+        <h2>
+          {new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD'
+          }).format(summary.withdraws)}
+        </h2>
       </Card>
       <Card green>
         <header>
           <p>Total</p>
           <img src={Total} alt="Total icon" />
         </header>
-        <h2>{summary.total}</h2>
+        <h2>
+          {new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD'
+          }).format(summary.total)}
+        </h2>
       </Card>
     </Container>
   );
