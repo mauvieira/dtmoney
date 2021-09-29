@@ -14,10 +14,10 @@ createServer({
         {
           id: 1,
           title: 'Freela',
-          type: 'deposit',
+          type: 'income',
           category: 'Dev',
           amount: 6000,
-          createdAt: new Date()
+          createdAt: new Date('2021-02-12 09:00:00')
         }
       ]
     });

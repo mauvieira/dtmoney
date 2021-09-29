@@ -6,7 +6,7 @@ interface Transaction {
   type: string;
   category: string;
   amount: number;
-  createdAt: Date;
+  createdAt: string;
 }
 
 interface TransactionsTableProps {
@@ -26,14 +26,23 @@ export const TransactionsTable = ({ transactions }: TransactionsTableProps) => {
           </tr>
         </thead>
         <tbody>
-          {transactions.map(({ id, title, amount, category, createdAt }) => (
-            <tr key={id}>
-              <td>{title}</td>
-              <td className="income">$ {amount}</td>
-              <td>{category}</td>
-              <td>{createdAt}</td>
-            </tr>
-          ))}
+          {transactions.map(
+            ({ id, title, type, amount, category, createdAt }) => (
+              <tr key={id}>
+                <td>{title}</td>
+                <td className={type}>
+                  {new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD'
+                  }).format(amount)}
+                </td>
+                <td>{category}</td>
+                <td>
+                  {new Intl.DateTimeFormat('en-US').format(new Date(createdAt))}
+                </td>
+              </tr>
+            )
+          )}
         </tbody>
       </table>
     </Container>
