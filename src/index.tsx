@@ -16,7 +16,7 @@ createServer({
           title: 'Salary',
           type: 'income',
           category: 'Job',
-          amount: 6000,
+          amount: 9000,
           createdAt: new Date()
         }
       ]

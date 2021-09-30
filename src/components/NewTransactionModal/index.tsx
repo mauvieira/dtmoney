@@ -23,7 +23,7 @@ const customStyles = {
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
     background: '#F0F2F5',
-    maxWidth: '576px',
+    maxWidth: '575px',
     width: '90%',
     padding: '64px 48px'
   }
