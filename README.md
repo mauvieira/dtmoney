@@ -20,7 +20,7 @@
 
 ## 🚀 Technologies
 
-This project was developed at the [RocketSeat Ignite Bootcamp](https://www.rocketseat.com.br/ignite) with the following technologies:
+This project was developed at the [Rocketseat Ignite Bootcamp](https://www.rocketseat.com.br/ignite) with the following technologies:
 
 -  [React](https://reactjs.org/)
 -  [TypeScript](https://www.typescriptlang.org/)
