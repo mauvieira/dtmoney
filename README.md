@@ -23,9 +23,13 @@
 This project was developed at the [RocketSeat Ignite Bootcamp](https://www.rocketseat.com.br/ignite) with the following technologies:
 
 -  [React](https://reactjs.org/)
+-  [TypeScript](https://www.typescriptlang.org/)
+-  [Mirage JS](https://miragejs.com/)
 -  [styled-components](https://www.styled-components.com/)
 -  [axios](https://github.com/axios/axios)
 -  [polished](https://polished.js.org/)
+-  [ESLint](https://eslint.org/)
+-  [Prettier](https://prettier.io/)
 -  [VS Code](https://code.visualstudio.com/)
 
 ## ℹ️ How to use
