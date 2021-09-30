@@ -73,7 +73,7 @@ export const NewTransactionModal = ({
       </CloseButton>
 
       <Container onSubmit={handleCreateNewTransaction}>
-        <h2>Add a new transaction</h2>
+        <h2>Create a new transaction</h2>
         <input
           type="text"
           placeholder="Title"

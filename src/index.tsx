@@ -13,9 +13,9 @@ createServer({
       transactions: [
         {
           id: 1,
-          title: 'Freela',
+          title: 'Salary',
           type: 'income',
-          category: 'Dev',
+          category: 'Job',
           amount: 6000,
           createdAt: new Date()
         }
